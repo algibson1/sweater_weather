@@ -1,7 +1,6 @@
 class Api::V0::ForecastController < ApplicationController 
   def index
-    # require 'pry'; binding.pry
-    forecast = ForecastFacade.search_by_city(params[:location])
-    render json: ForecastSerializer.new(forecast).as_json
+    forecast = WeatherFacade.new.get_forecast(params[:location])
+    render json: ForecastSerializer.new(forecast).to_json
   end
 end
