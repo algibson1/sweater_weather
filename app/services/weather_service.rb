@@ -6,6 +6,13 @@ class WeatherService
   end
 
   def current_weather(location)
-    conn.get("/current.json") do 
+    conn.get("current.json") do |faraday|
+      coordinates = mapquest.coordinates(location)
+      faraday.params[:q] = "#{coordinates[:lat]},#{coordinates[:lng]}"
+    end
+  end
+
+  def mapquest
+    @mapquest ||= MapquestFacade.new
   end
 end
