@@ -5,15 +5,10 @@ class WeatherService
     end
   end
 
-  def forecast(location)
+  def forecast(coordinates)
     conn.get("forecast.json") do |faraday|
-      coordinates = mapquest.coordinates(location)
       faraday.params[:q] = "#{coordinates[:lat]},#{coordinates[:lng]}"
       faraday.params[:days] = 5
     end
-  end
-
-  def mapquest
-    @mapquest ||= MapquestFacade.new
   end
 end
