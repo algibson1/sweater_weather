@@ -5,10 +5,11 @@ class WeatherService
     end
   end
 
-  def current_weather(location)
-    conn.get("current.json") do |faraday|
+  def forecast(location)
+    conn.get("forecast.json") do |faraday|
       coordinates = mapquest.coordinates(location)
       faraday.params[:q] = "#{coordinates[:lat]},#{coordinates[:lng]}"
+      faraday.params[:days] = 5
     end
   end
 
