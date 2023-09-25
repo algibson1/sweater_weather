@@ -1,0 +1,583 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://openlibrary.org/search.json?fields=title,isbn&q=denver,co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.18.0 (Ubuntu)
+      Date:
+      - Mon, 25 Sep 2023 17:50:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Method:
+      - GET, OPTIONS
+      Access-Control-Max-Age:
+      - '86400'
+      X-Ol-Stats:
+      - '"SR 1 0.246 TT 0 0.248"'
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "numFound": 772,
+            "start": 0,
+            "numFoundExact": true,
+            "docs": [
+                {
+                    "title": "Denver, Co",
+                    "isbn": [
+                        "0762507845",
+                        "9780762507849"
+                    ]
+                },
+                {
+                    "title": "Denver west, CO and Bailey, CO: Denver, CO",
+                    "isbn": [
+                        "9780607620054",
+                        "0607620056"
+                    ]
+                },
+                {
+                    "title": "Denver East, CO and Castle Rock, CO: Denver, CO",
+                    "isbn": [
+                        "0607620048",
+                        "9780607620047"
+                    ]
+                },
+                {
+                    "title": "Denver Regional, CO",
+                    "isbn": [
+                        "9780528952715",
+                        "0528952714"
+                    ]
+                },
+                {
+                    "title": "Denver Co Deluxe Flip Map",
+                    "isbn": [
+                        "0762557362",
+                        "9780762557363"
+                    ]
+                },
+                {
+                    "title": "University of Denver Co 2007",
+                    "isbn": [
+                        "9781427401687",
+                        "1427401683"
+                    ]
+                },
+                {
+                    "title": "Denver County Colorado Marriage Index 1873-1939"
+                },
+                {
+                    "title": "Denver DLX Flip Map Co267",
+                    "isbn": [
+                        "9780762531639",
+                        "0762531630"
+                    ]
+                },
+                {
+                    "title": "Denver, Co Vicinity (City Wall Maps)",
+                    "isbn": [
+                        "0762538627",
+                        "9780762538621"
+                    ]
+                },
+                {
+                    "title": "Insight Fleximap Denver, CO (Insight Fleximaps)",
+                    "isbn": [
+                        "9789812582621",
+                        "9812582622"
+                    ]
+                },
+                {
+                    "title": "Five Points Neighborhood of Denver  (CO)",
+                    "isbn": [
+                        "9780738518701",
+                        "0738518700"
+                    ]
+                },
+                {
+                    "title": "The Denver Cement Manufacturing Company"
+                },
+                {
+                    "title": "Denver, CO, US Dot-Grid Notebook",
+                    "isbn": [
+                        "9781541184251",
+                        "1541184254"
+                    ]
+                },
+                {
+                    "title": "Denver, Co (City & County Street Folding Maps)",
+                    "isbn": [
+                        "0762532475",
+                        "9780762532476"
+                    ]
+                },
+                {
+                    "title": "Photovoltaic safety, Denver, CO, 1988",
+                    "isbn": [
+                        "9780883183663",
+                        "0883183668"
+                    ]
+                },
+                {
+                    "title": "Rails Around Denver (CO) (Images of Rail)",
+                    "isbn": [
+                        "0738548022",
+                        "9780738548029"
+                    ]
+                },
+                {
+                    "title": "1985 alkaline papermaking"
+                },
+                {
+                    "title": "1990 census of population and housing."
+                },
+                {
+                    "title": "1990 census of population and housing."
+                },
+                {
+                    "title": "Key Issues Confronting the Black Community in Denver, CO",
+                    "isbn": [
+                        "9781527575523",
+                        "1527575527"
+                    ]
+                },
+                {
+                    "title": "Thriving at Home, North Metro Denver, CO Edition",
+                    "isbn": [
+                        "9781736525623",
+                        "173652562X"
+                    ]
+                },
+                {
+                    "title": "Denver Seed and Floral Co's descriptive list of reliable seeds"
+                },
+                {
+                    "title": "Final environmental impact statement on the C\u00d3 project"
+                },
+                {
+                    "title": "Bitch, Please. I'm From Denver.",
+                    "isbn": [
+                        "1073023869",
+                        "9781073023868",
+                        "9781073024377",
+                        "1073024377"
+                    ]
+                },
+                {
+                    "title": "Fall bulbs"
+                },
+                {
+                    "title": "1987 IEEE Ultrasonic Symposium Denver, Co October 1987/Ch24927",
+                    "isbn": [
+                        "9789999104159",
+                        "9999104150"
+                    ]
+                },
+                {
+                    "title": "Draft environmental statement on the C\u00d3 project, Wasson field/Denver unit"
+                },
+                {
+                    "title": "Draft environmental statement on the CO2 project, Wasson field/Denver unit"
+                },
+                {
+                    "title": "Bitch, Please. I'm from Denver",
+                    "isbn": [
+                        "9781671654600",
+                        "1671654609"
+                    ]
+                },
+                {
+                    "title": "1979 Corrugated Containers Conference proceedings, October 10-12, Hilton, Denver, CO"
+                },
+                {
+                    "title": "2017 Remodelmax Unit Cost Estimating Manual for Remodeling - Denver Co & Vicinity",
+                    "isbn": [
+                        "1365694798",
+                        "9781365694790"
+                    ]
+                },
+                {
+                    "title": "Neural information processing systems",
+                    "isbn": [
+                        "9780883185698",
+                        "0883185695"
+                    ]
+                },
+                {
+                    "title": "Draft environmental statement on the CO\u001bb2\u001bs project, Wasson field/Denver unit"
+                },
+                {
+                    "title": "Draft environmental statement on the CO2 project, Wasson field/Denver unit"
+                },
+                {
+                    "title": "Occupational Compensation Survey: Temporary Help Supply Services, Denver, CO, December 1994, (Summary)"
+                },
+                {
+                    "title": "Proceedings"
+                },
+                {
+                    "title": "Gold seal seeds and nursery stock, 1938"
+                },
+                {
+                    "title": "StreetSmart Denver by VanDam \u2014 Laminated pocket size Center City Street Map to Denver, CO with all attractions, sights, museums, hotels and shopping",
+                    "isbn": [
+                        "1932527982",
+                        "9781932527988"
+                    ]
+                },
+                {
+                    "title": "I'm Not Mad. I'm Just from Denver",
+                    "isbn": [
+                        "1673954480",
+                        "9781673954487"
+                    ]
+                },
+                {
+                    "title": "Infected wound therapy"
+                },
+                {
+                    "title": "Future Generation Photovoltaic Technology",
+                    "isbn": [
+                        "1563967049",
+                        "9781563967047"
+                    ]
+                },
+                {
+                    "title": "Management & Design of Long-Life Systems, Apr. 24-26, 1973, Denver, Co (Science & Technology Ser)",
+                    "isbn": [
+                        "9780877030690",
+                        "0877030693"
+                    ]
+                },
+                {
+                    "title": "Symposium on Intrinsic Bioremediation of Ground Water"
+                },
+                {
+                    "title": "IEEE National Symposium 1989 on Electromagnetic Compatibility Proceedings May 1989 Denver, Co./89Ch27367-Pbl",
+                    "isbn": [
+                        "9789991695532",
+                        "9991695532"
+                    ]
+                },
+                {
+                    "title": "Gems of Colorado scenery"
+                },
+                {
+                    "title": "U.S. Supreme Court Transcript of Record City of Englewood v. Denver & S P R Co",
+                    "isbn": [
+                        "9781270177456",
+                        "1270177451"
+                    ]
+                },
+                {
+                    "title": "Denver Chemical Mfg Co v. Lilley U.S. Supreme Court Transcript of Record with Supporting Pleadings",
+                    "isbn": [
+                        "9781270139454",
+                        "1270139452"
+                    ]
+                },
+                {
+                    "title": "Grid Computing - GRID 2001",
+                    "isbn": [
+                        "3540429492",
+                        "9783540456445",
+                        "9783540429494",
+                        "3540456449"
+                    ]
+                },
+                {
+                    "title": "The Denver & Rio Grande Railroad Co.  Colorado lines and Utah lines"
+                },
+                {
+                    "title": "Stability of Amorphous Silicon Materials and Solar Cells",
+                    "isbn": [
+                        "0883188317",
+                        "9780883188316"
+                    ]
+                },
+                {
+                    "title": "OVERSIGHT VISIT TO WICHITA, KS, DENVER, CO..., REPORT... COMM. ON  TRANSPORTATION & INFRASTRUCTURE... HOUSE OF REPS... INFRASTRUCTURE... HOUSE."
+                },
+                {
+                    "title": "Norgate v. Denver & R G R Co U.S. Supreme Court Transcript of Record with Supporting Pleadings",
+                    "isbn": [
+                        "1270220926",
+                        "9781270220923"
+                    ]
+                },
+                {
+                    "title": "Arctic and Alpine Environments [Volume 10, Proceedings VII Congress Int Assoc Quaternary Research, Boulder-Denver, Co, 1965]"
+                },
+                {
+                    "title": "Proceedings",
+                    "isbn": [
+                        "0898673755",
+                        "9780898673753"
+                    ]
+                },
+                {
+                    "title": "Proceedings",
+                    "isbn": [
+                        "9780898673692",
+                        "0898673690"
+                    ]
+                },
+                {
+                    "title": "IAQ 95",
+                    "isbn": [
+                        "9781883413309",
+                        "1883413303"
+                    ]
+                },
+                {
+                    "title": "Granting to the Denver, Cripple Creek and South-Western R. R. Co., a right of way"
+                },
+                {
+                    "title": "Twin-Wire Seminar, 1985",
+                    "isbn": [
+                        "0608103772",
+                        "9780608103778"
+                    ]
+                },
+                {
+                    "title": "Computer Architecture",
+                    "isbn": [
+                        "9780897919012",
+                        "0897919017"
+                    ]
+                },
+                {
+                    "title": "Grid computing - GRID 2001",
+                    "isbn": [
+                        "9783540429494",
+                        "3540429492"
+                    ]
+                },
+                {
+                    "title": "2005 IEEE Region 5 and IEEE Denver Section Technical, Professional and Student Development Workshop, Boulder, Co, April 7-8, 2005",
+                    "isbn": [
+                        "0780388984",
+                        "9780780388987"
+                    ]
+                },
+                {
+                    "title": "[Descriptive list of irrigated seeds]"
+                },
+                {
+                    "title": "[Descriptive list of irrigated seeds]"
+                },
+                {
+                    "title": "General catalogue of fruit and ornamental trees, shrubs, roses, paeonies, hardy border plants, bulbs, etc"
+                },
+                {
+                    "title": "Illustrated catalogue of ornamental trees, fruits, shrubs, and plants, with valuable hints on the selection, propagation and care of stock, spray calendar and formulas"
+                },
+                {
+                    "title": "Illustrated catalogue of ornamental trees, fruits, shrubs and plants"
+                },
+                {
+                    "title": "General catalogue of fruit and ornamental trees, shrubs, roses, paeonies, hardy border plants, bulbs, etc"
+                },
+                {
+                    "title": "Price list"
+                },
+                {
+                    "title": "Proceedings",
+                    "isbn": [
+                        "9780898673715",
+                        "0898673712"
+                    ]
+                },
+                {
+                    "title": "12th NREL photovoltaic program review",
+                    "isbn": [
+                        "1563963159",
+                        "9781563963155"
+                    ]
+                },
+                {
+                    "title": "Proceedings ofthe Technical Association of the Pulp and Paper Industry"
+                },
+                {
+                    "title": "Implementing Water Reuse",
+                    "isbn": [
+                        "0915295164",
+                        "9780915295166"
+                    ]
+                },
+                {
+                    "title": "Photovoltaic Advanced Research & Development Project",
+                    "isbn": [
+                        "1563960567",
+                        "9781563960567"
+                    ]
+                },
+                {
+                    "title": "1990 census of population and housing."
+                },
+                {
+                    "title": "1990 census of population and housing."
+                },
+                {
+                    "title": "Grid computing--GRID 2001",
+                    "isbn": [
+                        "9783540429494",
+                        "3540429492"
+                    ]
+                },
+                {
+                    "title": "Official report of the Tenth International Sunday-school convention, Trinity Methodist Episcopal Church, Denver, CO, June 26 to 30, 1902"
+                },
+                {
+                    "title": "Smart Homes and Health Telematics",
+                    "isbn": [
+                        "9783319144238",
+                        "3319144243",
+                        "3319144235",
+                        "9783319144245"
+                    ]
+                },
+                {
+                    "title": "Tutorials on Emerging Methodologies and Applications in Operations Research",
+                    "isbn": [
+                        "0387228268",
+                        "9780387228266",
+                        "9781441919847",
+                        "1441919848"
+                    ]
+                },
+                {
+                    "title": "Solar diversification"
+                },
+                {
+                    "title": "Software language engineering",
+                    "isbn": [
+                        "3642121063",
+                        "9783642121067"
+                    ]
+                },
+                {
+                    "title": "Models In Software Engineering Workshops And Symposia At Models 2009 Denver Co Usa October 49 2009 Reports And Revised Selected Papers",
+                    "isbn": [
+                        "9783642122606",
+                        "3642122604"
+                    ]
+                },
+                {
+                    "title": "Regional issues in wetlands management, permitting and mitigation"
+                },
+                {
+                    "title": "Magnetism and Magnetic Materials",
+                    "isbn": [
+                        "0883181096",
+                        "9780883181096"
+                    ]
+                },
+                {
+                    "title": "For Pike's Peak, Ho!"
+                },
+                {
+                    "title": "2002 International Symposium on Microelectronics",
+                    "isbn": [
+                        "9780930815660",
+                        "0930815661"
+                    ]
+                },
+                {
+                    "title": "Report of the re-organization committee of the Denver & Rio Grande Western R\u02bcY Co. to the bond and stockholders of the Rio Grande Western Railway Co. upon the conclusion of their work"
+                },
+                {
+                    "title": "1990 census of population and housing",
+                    "isbn": [
+                        "9780160367144",
+                        "016036714X"
+                    ]
+                },
+                {
+                    "title": "KEPNER MIDDLE SCHOOL, DENVER, CO. SCHOOLS ON THE MOVE: STORIES OF URBAN SCHOOLS ENGAGED IN INCLUSIVE JOURNEYS OF CHANGE... ED463357... U.S."
+                },
+                {
+                    "title": "1996 Process Control, Electrical & Information Conference",
+                    "isbn": [
+                        "9780898526608",
+                        "0898526604"
+                    ]
+                },
+                {
+                    "title": "Mine drainage: proceedings of the first International Mine Drainage Symposium, Denver, Colorado, May 1979.  edtied by George O. Argall and C.O. Brawner",
+                    "isbn": [
+                        "9780879301224",
+                        "0879301228"
+                    ]
+                },
+                {
+                    "title": "Treating a complex ore"
+                },
+                {
+                    "title": "Tutorials on emerging methodologies and applications in operations research",
+                    "isbn": [
+                        "0387228268",
+                        "9780387228266"
+                    ]
+                },
+                {
+                    "title": "Tutorials on Emerging Methodologies and Applications in Operations Research: Presented at INFORMS 2004, Denver, CO (International Series in Operations Research & Management Science Book 76)",
+                    "isbn": [
+                        "9780387228273",
+                        "0387228276"
+                    ]
+                },
+                {
+                    "title": "Tutorials on emerging methodologies and applications in operations research",
+                    "isbn": [
+                        "9780387228266",
+                        "0387228268"
+                    ]
+                },
+                {
+                    "title": "Proceedings of the twelfth Biennial Symposium, the American Academy of Veterinary Pharmacology and Therapeutics, Denver, CO, May 22-24, 2001"
+                },
+                {
+                    "title": "Relocation of Western Executive Seminar Center from Denver to Grand Junction, CO"
+                },
+                {
+                    "title": "Aircraft accident report"
+                },
+                {
+                    "title": "Conceptual design of a regional information system"
+                },
+                {
+                    "title": "ICC '91"
+                }
+            ],
+            "num_found": 772,
+            "q": "denver,co",
+            "offset": null
+        }
+  recorded_at: Mon, 25 Sep 2023 17:50:08 GMT
+recorded_with: VCR 6.2.0
