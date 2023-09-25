@@ -4,7 +4,7 @@ class Api::V0::UsersController < ApplicationController
     user.generate_key
     begin 
       user.save!
-      render json: UserSerializer.new(user), status: :created
+      render json: UsersSerializer.new(user), status: :created
     rescue ActiveRecord::RecordInvalid => error 
       return render json: ErrorSerializer.new(error).to_json, status: :unprocessable_entity if error.message.include?("taken") 
       render json: ErrorSerializer.new(error).to_json, status: :bad_request 
