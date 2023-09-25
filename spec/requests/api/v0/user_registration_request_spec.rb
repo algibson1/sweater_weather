@@ -73,7 +73,7 @@ RSpec.describe "User registration endpoint" do
 
     post "/api/v0/users", params: params.to_json, headers: {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'}
 
-    expect(response.status).to eq(400)
+    expect(response.status).to eq(422)
 
     parsed = JSON.parse(response.body, symbolize_names: true)
 
