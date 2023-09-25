@@ -20,4 +20,24 @@ RSpec.describe MapquestService, :vcr do
     expect(coordinates).to have_key(:lng)
     expect(coordinates[:lng]).to be_a(Float)
   end
+
+  it "gets directions" do
+    service = MapquestService.new
+
+    response = service.get_directions({origin: "cincinatti,oh", destination: "chicago,il"})
+
+    info = JSON.parse(response.body, symbolize_names: true)
+
+    expect(info).to have_key(:route)
+    expect(info[:route]).to have_key(:formattedTime)
+    expect(info[:route][:formattedTime]).to match(/\d{2}:\d{2}:\d{2}/)
+    expect(info[:route]).to have_key(:boundingBox)
+
+    expect(info[:route][:boundingBox].keys).to match_array([:ul, :lr])
+    expect(info[:route][:boundingBox][:ul]).to have_key(:lat)
+    expect(info[:route][:boundingBox][:ul]).to have_key(:lng)
+
+    expect(info[:route][:boundingBox][:lr]).to have_key(:lat)
+    expect(info[:route][:boundingBox][:lr]).to have_key(:lng)
+  end
 end
