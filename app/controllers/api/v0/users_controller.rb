@@ -6,7 +6,8 @@ class Api::V0::UsersController < ApplicationController
       user.save!
       render json: UserSerializer.new(user), status: :created
     rescue ActiveRecord::RecordInvalid => error 
-      render json: ErrorSerializer.new(error).to_json, status: :bad_request
+      return render json: ErrorSerializer.new(error).to_json, status: :unprocessable_entity if error.message.include?("taken") 
+      render json: ErrorSerializer.new(error).to_json, status: :bad_request 
     end
   end
 
