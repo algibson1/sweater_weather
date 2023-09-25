@@ -5,7 +5,7 @@ class BookSearchFacade
     {
       total_books_found: results[:numFound],
       destination: query_params[:location],
-      books: results[:docs][0...query_params[:quantity]]
+      books: results[:docs][0...query_params[:quantity].to_i]
     }
   end
 
