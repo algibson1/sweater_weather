@@ -40,7 +40,7 @@ RSpec.describe "Book Search Endpoint" do
     books = results[:data][:attributes][:books]
 
     expect(books).to be_an(Array)
-    expect(books.count).to eq(results[:data][:attributes][:total_books_found])
+    expect(books.count).to eq(5)
     books.each do |book|
       expect(book).to have_key(:isbn)
       expect(book[:isbn]).to be_an(Array)
@@ -54,5 +54,13 @@ RSpec.describe "Book Search Endpoint" do
 
   xit "has an error if given city is invalid" do
 
+  end
+
+  xit "has an error if missing a city in query" do
+
+  end
+
+  xit "returns all books if no quantity given" do
+    
   end
 end
