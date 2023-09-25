@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "Book Search Endpoint", :vcr do
-  it "returns book results for a given city" do
+RSpec.describe "Book Search Endpoint" do
+  it "returns book results for a given city", :vcr do
     get "/api/v0/book-search", params: {location: "denver,co", quantity: 5}
 
     expect(response).to be_successful
@@ -53,19 +53,39 @@ RSpec.describe "Book Search Endpoint", :vcr do
     end
   end
 
-  xit "has an error if given city is invalid" do
+  it "has an error if missing a city in query" do
+    get "/api/v0/book-search", params: { quantity: 5 }
 
+    expect(response.status).to eq(422)
+
+    results = JSON.parse(response.body, symbolize_names: true)
+    expect(results).to eq({message: "Location cannot be blank"})
   end
 
-  xit "has an error if missing a city in query" do
+  it "has an error if quantity is missing" do
+    get "/api/v0/book-search", params: { location: "denver,co" }
 
+    expect(response.status).to eq(422)
+
+    results = JSON.parse(response.body, symbolize_names: true)
+    expect(results).to eq({message: "Quantity must be a number greater than 0"})
   end
 
-  xit "has an error if quantity is missing" do
+  it "has en error if no parameters are provided" do
+    get "/api/v0/book-search"
 
+    expect(response.status).to eq(422)
+
+    results = JSON.parse(response.body, symbolize_names: true)
+    expect(results).to eq({message: "Location cannot be blank"})
   end
-
-  xit "has an error if quantity is not greater than zero" do
+  
+  it "has an error if quantity is not greater than zero" do
+    get "/api/v0/book-search", params: {location: "denver,co", quantity: 0}
     
+    expect(response.status).to eq(422)
+    
+    results = JSON.parse(response.body, symbolize_names: true)
+    expect(results).to eq({message: "Quantity must be a number greater than 0"})
   end
 end
