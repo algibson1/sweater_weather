@@ -16,7 +16,10 @@ class BookSearchSerializer
             temperature: "#{@forecast[:temp_f].round} F"
           },
           total_books_found: @book_results[:total_books_found],
-          books: @book_results[:books]
+          books: @book_results[:books].map do |book|
+            {isbn: book[:isbn],
+            title: book[:title]}
+          end
         }
       }
     }
