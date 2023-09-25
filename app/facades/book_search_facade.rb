@@ -4,6 +4,7 @@ class BookSearchFacade
     format(JSON.parse(response.body, symbolize_names: true), query_params)
   end
 
+  # Would move into serializer with more time to refactor
   def format(results, query_params)
     {
       total_books_found: results[:numFound],
