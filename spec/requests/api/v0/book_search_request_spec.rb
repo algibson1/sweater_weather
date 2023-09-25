@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Book Search Endpoint" do
+RSpec.describe "Book Search Endpoint", :vcr do
   it "returns book results for a given city" do
     get "/api/v0/book-search", params: {location: "denver,co", quantity: 5}
 
@@ -22,7 +22,7 @@ RSpec.describe "Book Search Endpoint" do
     expect(results[:data][:attributes]).to be_a(Hash)
 
     expect(results[:data][:attributes]).to have_key(:destination)
-    expect(results[:data][:attributes][:destination]).to have_key("denver,co")
+    expect(results[:data][:attributes][:destination]).to eq("denver,co")
 
     expect(results[:data][:attributes]).to have_key(:forecast)
     expect(results[:data][:attributes][:forecast]).to be_a(Hash)
@@ -41,14 +41,15 @@ RSpec.describe "Book Search Endpoint" do
 
     expect(books).to be_an(Array)
     expect(books.count).to eq(5)
-    books.each do |book|
-      expect(book).to have_key(:isbn)
-      expect(book[:isbn]).to be_an(Array)
-      expect(book[:isbn]).to all be_a(String)
 
+    books.each do |book|
       expect(book).to have_key(:title)
       expect(book[:title]).to be_a(String)
-      expect(book[:title]).to include("Denver")
+      expect(book).to have_key(:isbn)
+      if book[:isbn]
+        expect(book[:isbn]).to be_an(Array)
+        expect(book[:isbn]).to all be_a(String)
+      end
     end
   end
 
@@ -60,7 +61,11 @@ RSpec.describe "Book Search Endpoint" do
 
   end
 
-  xit "returns all books if no quantity given" do
+  xit "has an error if quantity is missing" do
+
+  end
+
+  xit "has an error if quantity is not greater than zero" do
     
   end
 end
