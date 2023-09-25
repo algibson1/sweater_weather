@@ -1,7 +1,10 @@
 class BookSearchFacade 
   def find_books(query_params)
     response = service.search(query_params[:location])
-    results = JSON.parse(response.body, symbolize_names: true)
+    format(JSON.parse(response.body, symbolize_names: true), query_params)
+  end
+
+  def format(results, query_params)
     {
       total_books_found: results[:numFound],
       destination: query_params[:location],
