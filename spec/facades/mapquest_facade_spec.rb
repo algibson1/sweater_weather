@@ -14,6 +14,24 @@ RSpec.describe MapquestFacade, :vcr do
     expect(coordinates[:lat]).to be_a(Float)
   end
 
+  it "returns an error if location is too vague" do
+    facade = MapquestFacade.new
+
+    expect {facade.coordinates("paris,utah")}.to raise_error(ActionController::BadRequest)
+  end
+
+  it "returns an error if location is gibberish" do
+    facade = MapquestFacade.new
+
+    expect {facade.coordinates("ajshdfks;dd")}.to raise_error(ActionController::BadRequest)
+  end
+
+  it "returns an error if location is nil" do
+    facade = MapquestFacade.new
+
+    expect {facade.coordinates(nil)}.to raise_error(ActionController::BadRequest)
+  end
+
   it "returns parsed direction info" do
     facade = MapquestFacade.new
 
