@@ -13,7 +13,7 @@ RSpec.describe RoadTrip, :vcr do
     expect(@trip.end_city).to eq("Chicago, IL")
     expect(@trip.travel_time).to be_a(String)
     expect(@trip.travel_time).to eq(@directions[:formattedTime])
-    
+
     expect(@trip.weather_at_eta).to be_a(Hash)
     expect(@trip.weather_at_eta.keys).to match_array([:datetime, :temperature, :condition])
     expect(@trip.weather_at_eta[:datetime]).to be_a(String)
@@ -54,5 +54,14 @@ RSpec.describe RoadTrip, :vcr do
     end
 
     expect(chosen_hour).to eq(expected)
+  end
+
+  it "might have invalid route data to work with" do
+    bad_trip = RoadTrip.new({origin: "cincinatti,oh", destination: "paris,france"})
+
+    expect(bad_trip.start_city).to eq("cincinatti,oh")
+    expect(bad_trip.end_city).to eq("paris,france")
+    expect(bad_trip.travel_time).to eq("impossible")
+    expect(bad_trip.weather_at_eta).to eq({})
   end
 end
