@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Road trip endpoint" do
+RSpec.describe "Road trip endpoint", :vcr do
   before(:each) do
     params = {
       "email": "whatever@example.com",
@@ -38,10 +38,10 @@ RSpec.describe "Road trip endpoint" do
     expect(data[:attributes]).to be_a(Hash)
 
     expect(data[:attributes]).to have_key(:start_city)
-    expect(data[:attributes][:start_city]).to eq("Cincinatti,OH")
+    expect(data[:attributes][:start_city]).to eq("Cincinnati, OH")
 
     expect(data[:attributes]).to have_key(:end_city)
-    expect(data[:attributes][:end_city]).to eq("Chicago,IL")
+    expect(data[:attributes][:end_city]).to eq("Chicago, IL")
 
     expect(data[:attributes]).to have_key(:travel_time)
     expect(data[:attributes][:travel_time]).to be_a(String)
@@ -61,12 +61,83 @@ RSpec.describe "Road trip endpoint" do
     expect(data[:attributes][:weather_at_eta][:condition]).to be_a(String)
   end
 
-  xit "throws an error if api key is invalid" do
+  it "throws an error if api key is invalid" do
 
+    params = {
+      "origin": "Cincinatti,OH",
+      "destination": "Chicago,IL",
+      "api_key": "bad_api_key"
+    }    
+
+    post "/api/v0/road_trip", params: params.to_json, headers: {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'}
+
+    expect(response.status).to eq(401)
+
+    message = JSON.parse(response.body, symbolize_names: true)
+
+    expect(message).to eq({errors: [{detail: "Validation failed: Api key is missing or invalid"}]})
   end
 
-  xit "has empty info if there is no route between the cities" do
-  
+  it "throws an error if api key is missing" do 
+    params = {
+      "origin": "Cincinatti,OH",
+      "destination": "Chicago,IL"
+    }    
+
+    post "/api/v0/road_trip", params: params.to_json, headers: {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'}
+
+    expect(response.status).to eq(401)
+
+    message = JSON.parse(response.body, symbolize_names: true)
+
+    expect(message).to eq({errors: [{detail: "Validation failed: Api key is missing or invalid"}]})
+  end
+
+  it "has empty info if there is no route between the cities" do
+    
+    params = {
+      "origin": "Cincinatti,OH",
+      "destination": "London,England",
+      "api_key": @user.api_key
+    }    
+
+    post "/api/v0/road_trip", params: params.to_json, headers: {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'}
+
+    expect(response.status).to eq(402)
+
+    data = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(data).to have_key(:id)
+    expect(data[:id]).to eq(nil)
+
+    expect(data).to have_key(:type)
+    expect(data[:type]).to eq("road_trip")
+    
+    expect(data).to have_key(:attributes)
+    expect(data[:attributes]).to be_a(Hash)
+
+    expect(data[:attributes]).to have_key(:start_city)
+    expect(data[:attributes][:start_city]).to eq("Cincinnati, OH")
+
+    expect(data[:attributes]).to have_key(:end_city)
+    expect(data[:attributes][:end_city]).to eq("Chicago, IL")
+
+    expect(data[:attributes]).to have_key(:travel_time)
+    expect(data[:attributes][:travel_time]).to be_a(String)
+    expect(data[:attributes][:travel_time]).to match(/\d{2}:\d{2}/)
+
+    expect(data[:attributes]).to have_key(:weather_at_eta)
+    expect(data[:attributes][:weather_at_eta]).to be_a(Hash)
+
+    expect(data[:attributes][:weather_at_eta]).to have_key(:datetime)
+    expect(data[:attributes][:weather_at_eta][:datetime]).to be_a(String)
+    expect(data[:attributes][:weather_at_eta][:datetime]).to match(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
+
+    expect(data[:attributes][:weather_at_eta]).to have_key(:temperature)
+    expect(data[:attributes][:weather_at_eta][:temperature]).to be_a(Float)
+    
+    expect(data[:attributes][:weather_at_eta]).to have_key(:condition)
+    expect(data[:attributes][:weather_at_eta][:condition]).to be_a(String)
   end
 
   xit "can do BIG road trips" do
