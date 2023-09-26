@@ -2,13 +2,15 @@ class RoadTrip
   attr_reader :start_city,
               :end_city,
               :travel_time,
-              :weather_at_eta
+              :weather_at_eta,
+              :id
 
-  def initialize(directions, forecast)
-    @start_city = format_location(directions[:locations][0])
-    @end_city = format_location(directions[:locations][1])
-    @travel_time = directions[:formattedTime]
+  def initialize(directions, forecast = nil)
+    @start_city = directions[:origin] || format_location(directions[:locations][0])
+    @end_city = directions[:destination] || format_location(directions[:locations][1])
+    @travel_time = directions[:formattedTime] || "impossible"
     @weather_at_eta = format_forecast(forecast)
+    @id = nil
   end
 
   def format_location(data)
@@ -17,6 +19,7 @@ class RoadTrip
   end
   
   def format_forecast(forecast)
+    return {} if forecast.nil?
     eta_weather = find_forecast_hour(forecast)
     {
       datetime: eta_weather[:time],
