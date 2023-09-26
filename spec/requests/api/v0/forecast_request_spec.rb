@@ -79,4 +79,31 @@ RSpec.describe "Forecast Endpoint", :vcr do
       expect(hour[:icon]).to end_with(".png")
     end
   end
+
+  it "returns an error if given location is too vague/doesn't have an exact match" do
+    get "/api/v0/forecast", params: {location: "paris,utah"}
+
+    expect(response.status).to eq(400)
+
+    message = JSON.parse(response.body, symbolize_names: true)
+    expect(message).to eq({errors: [{detail: "Validation failed: Could not find location matching given information"}]})
+  end
+
+  it "returns an error if no location given" do
+    get "/api/v0/forecast"
+
+    expect(response.status).to eq(400)
+
+    message = JSON.parse(response.body, symbolize_names: true)
+    expect(message).to eq({errors: [{detail: "Validation failed: Could not find location matching given information"}]})
+  end
+
+  it "returns an error if location is gibberish" do
+    get "/api/v0/forecast", params: {location: "dfghjkhgfhjkl"}
+
+    expect(response.status).to eq(400)
+
+    message = JSON.parse(response.body, symbolize_names: true)
+    expect(message).to eq({errors: [{detail: "Validation failed: Could not find location matching given information"}]})
+  end
 end
