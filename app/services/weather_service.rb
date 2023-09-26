@@ -5,10 +5,10 @@ class WeatherService
     end
   end
 
-  def forecast(coordinates)
+  def forecast(coordinates, days)
     conn.get("forecast.json") do |faraday|
       faraday.params[:q] = "#{coordinates[:lat]},#{coordinates[:lng]}"
-      faraday.params[:days] = 5
+      faraday.params[:days] = days
     end
   end
 end
