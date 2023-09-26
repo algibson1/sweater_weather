@@ -3,7 +3,8 @@ class RoadTrip
               :end_city,
               :travel_time,
               :weather_at_eta,
-              :id
+              :id,
+              :status
 
   def initialize(directions, forecast = nil)
     @start_city = directions[:origin] || format_location(directions[:locations][0])
@@ -11,6 +12,7 @@ class RoadTrip
     @travel_time = directions[:formattedTime] || "impossible"
     @weather_at_eta = format_forecast(forecast)
     @id = nil
+    @status = (forecast ? 200 : 422)
   end
 
   def format_location(data)
