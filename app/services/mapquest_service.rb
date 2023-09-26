@@ -10,4 +10,11 @@ class MapquestService
       faraday.params[:location] = location
     end
   end
+
+  def get_directions(locations)
+    conn.get("/directions/v2/route") do |faraday|
+      faraday.params[:from] = locations[:origin]
+      faraday.params[:to] = locations[:destination]
+    end
+  end
 end
