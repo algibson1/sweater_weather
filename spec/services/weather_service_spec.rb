@@ -10,7 +10,7 @@ RSpec.describe WeatherService, :vcr do
   it "returns full forecast: current weather, plus hourly data for next 5 days" do
     service = WeatherService.new
 
-    response = service.forecast({lat: 39.11, lng: -84.5})
+    response = service.forecast({lat: 39.11, lng: -84.5}, 5)
 
     data = JSON.parse(response.body, symbolize_names: true)
 
