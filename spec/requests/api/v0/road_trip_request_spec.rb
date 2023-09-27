@@ -28,36 +28,22 @@ RSpec.describe "Road trip endpoint", :vcr do
 
     data = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(data).to have_key(:id)
+    expect(data.keys).to match_array([:id, :type, :attributes])
     expect(data[:id]).to eq(nil)
-
-    expect(data).to have_key(:type)
     expect(data[:type]).to eq("road_trip")
-    
-    expect(data).to have_key(:attributes)
-    expect(data[:attributes]).to be_a(Hash)
+        expect(data[:attributes]).to be_a(Hash)
 
-    expect(data[:attributes]).to have_key(:start_city)
+    expect(data[:attributes].keys).to match_array([:start_city, :end_city, :travel_time, :weather_at_eta])
     expect(data[:attributes][:start_city]).to eq("Cincinnati, OH")
-
-    expect(data[:attributes]).to have_key(:end_city)
     expect(data[:attributes][:end_city]).to eq("Chicago, IL")
-
-    expect(data[:attributes]).to have_key(:travel_time)
     expect(data[:attributes][:travel_time]).to be_a(String)
     expect(data[:attributes][:travel_time]).to match(/\d{2}:\d{2}/)
-
-    expect(data[:attributes]).to have_key(:weather_at_eta)
     expect(data[:attributes][:weather_at_eta]).to be_a(Hash)
 
-    expect(data[:attributes][:weather_at_eta]).to have_key(:datetime)
+    expect(data[:attributes][:weather_at_eta].keys).to match_array([:datetime, :temperature, :condition])
     expect(data[:attributes][:weather_at_eta][:datetime]).to be_a(String)
     expect(data[:attributes][:weather_at_eta][:datetime]).to match(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
-
-    expect(data[:attributes][:weather_at_eta]).to have_key(:temperature)
     expect(data[:attributes][:weather_at_eta][:temperature]).to be_a(Float)
-    
-    expect(data[:attributes][:weather_at_eta]).to have_key(:condition)
     expect(data[:attributes][:weather_at_eta][:condition]).to be_a(String)
   end
 
@@ -145,6 +131,6 @@ RSpec.describe "Road trip endpoint", :vcr do
     expect(data[:attributes][:travel_time]).to match(/\d{3}:\d{2}/) #expecting 100+ hours
 
     expect(data[:attributes][:weather_at_eta][:datetime]).to match(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
-    expect(data[:attributes][:weather_at_eta][:datetime].to_date > (Time.now + 4.days)).to eq(true)
+    expect(data[:attributes][:weather_at_eta][:datetime].to_time > (Time.now + 4.days)).to eq(true)
   end
 end
