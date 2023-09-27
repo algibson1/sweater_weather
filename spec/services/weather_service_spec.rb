@@ -10,7 +10,7 @@ RSpec.describe WeatherService, :vcr do
   it "returns full forecast: current weather, plus hourly data for next 5 days" do
     service = WeatherService.new
 
-    response = service.full_forecast({lat: 39.11, lng: -84.5})
+    response = service.forecast({lat: 39.11, lng: -84.5}, 5)
 
     data = JSON.parse(response.body, symbolize_names: true)
 
@@ -54,28 +54,5 @@ RSpec.describe WeatherService, :vcr do
         expect(hour[:condition]).to have_key(:icon)
       end
     end
-  end
-
-  it "returns forecasted weather for a given future time and day" do
-    service = WeatherService.new
-    future_date = Time.now + 3.days 
-    formatted_date = future_date.to_s[0..9]
-
-    response = service.forecast_for_eta({lat: 39.11, lng: -84.5}, formatted_date, 16)
-
-    data = JSON.parse(response.body, symbolize_names: true)
-
-    expect(data).to have_key(:current)
-
-    expect(data).to have_key(:forecast)
-    expect(data[:forecast]).to have_key(:forecastday)
-    expect(data[:forecast][:forecastday]).to be_an(Array)
-    expect(data[:forecast][:forecastday].count).to eq(1)
-    
-    expect(data[:forecast][:forecastday][0][:date]).to eq(formatted_date)
-    expect(data[:forecast][:forecastday][0][:hour]).to be_an(Array)
-    expect(data[:forecast][:forecastday][0][:hour].count).to eq(1)
-    
-    expect(data[:forecast][:forecastday][0][:hour][0][:time]).to include("16:00")
   end
 end

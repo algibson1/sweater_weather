@@ -5,18 +5,10 @@ class WeatherService
     end
   end
 
-  def full_forecast(coordinates)
+  def forecast(coordinates, days)
     conn.get("forecast.json") do |faraday|
       faraday.params[:q] = "#{coordinates[:lat]},#{coordinates[:lng]}"
-      faraday.params[:days] = 5
-    end
-  end
-
-  def forecast_for_eta(coordinates, date, hour)
-    conn.get("forecast.json") do |faraday|
-      faraday.params[:q] = "#{coordinates[:lat]},#{coordinates[:lng]}"
-      faraday.params[:dt] = date
-      faraday.params[:hour] = hour
+      faraday.params[:days] = days
     end
   end
 end
