@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.mapquestapi.com/geocoding/v1/address?key=<HIDDEN_KEY>&location=dfghjkhgfhjkl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Sep 2023 03:17:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '674'
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit-2628000:
+      - '15000'
+      X-Ratelimit-Remaining-2628000:
+      - '14861'
+      Ratelimit-Limit:
+      - '15000'
+      Ratelimit-Remaining:
+      - '14861'
+      Ratelimit-Reset:
+      - '1903356'
+      X-Powered-By:
+      - MapQuest
+      X-Request-Id:
+      - 60dae080-5ce4-11ee-a6bf-19b3c358d110
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"2a2-4abueshqb7liQvR7F4BqsdTEw6A"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpbmZvIjp7InN0YXR1c2NvZGUiOjAsImNvcHlyaWdodCI6eyJ0ZXh0IjoiwqkgMjAyMyBNYXBRdWVzdCwgSW5jLiIsImltYWdlVXJsIjoiaHR0cDovL2FwaS5tcWNkbi5jb20vcmVzL21xbG9nby5naWYiLCJpbWFnZUFsdFRleHQiOiLCqSAyMDIzIE1hcFF1ZXN0LCBJbmMuIn0sIm1lc3NhZ2VzIjpbXX0sIm9wdGlvbnMiOnsibWF4UmVzdWx0cyI6LTEsImlnbm9yZUxhdExuZ0lucHV0IjpmYWxzZX0sInJlc3VsdHMiOlt7InByb3ZpZGVkTG9jYXRpb24iOnsibG9jYXRpb24iOiJkZmdoamtoZ2ZoamtsIn0sImxvY2F0aW9ucyI6W3sic3RyZWV0IjoiIiwiYWRtaW5BcmVhNiI6IiIsImFkbWluQXJlYTUiOiIiLCJhZG1pbkFyZWE0IjoiIiwiYWRtaW5BcmVhMyI6IiIsImFkbWluQXJlYTEiOiJVUyIsInBvc3RhbENvZGUiOiIiLCJnZW9jb2RlUXVhbGl0eUNvZGUiOiJBMVhBWCIsImdlb2NvZGVRdWFsaXR5IjoiQ09VTlRSWSIsImRyYWdQb2ludCI6ZmFsc2UsInNpZGVPZlN0cmVldCI6Ik4iLCJsaW5rSWQiOiIwIiwidW5rbm93bklucHV0IjoiIiwidHlwZSI6InMiLCJsYXRMbmciOnsibGF0IjozOC44OTAzNywibG5nIjotNzcuMDMxOTZ9LCJkaXNwbGF5TGF0TG5nIjp7ImxhdCI6MzguODkwMzcsImxuZyI6LTc3LjAzMTk2fSwibWFwVXJsIjoiIiwic291cmNlIjoiRkFMTEJBQ0sifV19XX0=
+  recorded_at: Wed, 27 Sep 2023 03:17:24 GMT
+recorded_with: VCR 6.2.0
