@@ -1,6 +1,5 @@
 class Api::V0::RoadTripController < ApplicationController
   before_action :validate_key, only: [:create]
-  rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_response
 
   def create 
     render json: RoadTripSerializer.new(trip), status: trip.status
@@ -20,9 +19,5 @@ class Api::V0::RoadTripController < ApplicationController
     unless User.find_by(api_key: params[:api_key])
       raise ActiveRecord::RecordNotFound, "Validation failed: Api key is missing or invalid"
     end
-  end
-
-  def unauthorized_response(error)
-    render json: ErrorSerializer.new(error).to_json, status: :unauthorized
   end
 end

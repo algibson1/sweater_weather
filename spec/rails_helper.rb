@@ -1,4 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
+require 'simplecov'
+SimpleCov.start 'rails'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -75,5 +78,9 @@ VCR.configure do |config|
   config.filter_sensitive_data('<HIDDEN_KEY>') { Rails.application.credentials.mapquest[:key] }
   config.filter_sensitive_data('<HIDDEN_KEY>') { Rails.application.credentials.weather[:key] }
   config.configure_rspec_metadata!
-  config.default_cassette_options = { re_record_interval: 7.days, record: :new_episodes }
+  config.default_cassette_options = { 
+    re_record_interval: 7.days, 
+    record: :once,
+    match_requests_on: [:method]
+   }
 end

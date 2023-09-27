@@ -8,15 +8,18 @@ RSpec.describe "User registration endpoint" do
         "password_confirmation": "password"
       }
 
-    post "/api/v0/users", params: params.to_json, headers: {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'}
+    post "/api/v0/users", params: params, as: :json
 
     expect(response).to be_successful
     expect(response.status).to eq(201)
 
     parsed = JSON.parse(response.body, symbolize_names: true)[:data]
+    expect(parsed.keys).to match_array([:type, :id, :attributes])
 
     expect(parsed[:type]).to eq("users")
-    expect(parsed[:id]).to be_an(String)
+    expect(parsed[:id]).to be_a(String)
+
+    expect(parsed[:attributes].keys).to match_array([:email, :api_key])
     expect(parsed[:attributes][:email]).to eq("whatever@example.com")
     expect(parsed[:attributes][:api_key]).to be_a(String)
 
@@ -63,7 +66,7 @@ RSpec.describe "User registration endpoint" do
   end
 
   it "returns an error if email is not unique" do
-    User.create(email: "something", password: "password", password: "password", api_key: "blahblahblah")
+    User.create(email: "something", password: "password", password_confirmation: "password", api_key: "blahblahblah")
 
     params = {
       "email": "something",
