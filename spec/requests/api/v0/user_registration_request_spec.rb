@@ -17,7 +17,7 @@ RSpec.describe "User registration endpoint" do
     expect(parsed.keys).to match_array([:type, :id, :attributes])
 
     expect(parsed[:type]).to eq("users")
-    expect(parsed[:id]).to be_an(String)
+    expect(parsed[:id]).to be_a(String)
 
     expect(parsed[:attributes].keys).to match_array([:email, :api_key])
     expect(parsed[:attributes][:email]).to eq("whatever@example.com")
