@@ -75,5 +75,9 @@ VCR.configure do |config|
   config.filter_sensitive_data('<HIDDEN_KEY>') { Rails.application.credentials.mapquest[:key] }
   config.filter_sensitive_data('<HIDDEN_KEY>') { Rails.application.credentials.weather[:key] }
   config.configure_rspec_metadata!
-  config.default_cassette_options = { re_record_interval: 7.days, record: :new_episodes }
+  config.default_cassette_options = { 
+    re_record_interval: 7.days, 
+    record: :once,
+    match_requests_on: [:method]
+   }
 end
